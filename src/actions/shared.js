@@ -4,7 +4,7 @@ import { receiveUsers } from '../actions/users'
 import { authUser } from '../actions/authUser'
 
 
-AUTH_USER_ID = "tylermcginnis"
+const AUTH_USER_ID = "tylermcginnis"
 
 export function handleInitialData() {
     return (dispatch) => {
