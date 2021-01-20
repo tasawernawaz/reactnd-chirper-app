@@ -45,14 +45,14 @@ export function addTweet(tweet) {
     }
 }
 
-export function handleAddTweet(text, replayingTo) {
+export function handleAddTweet(text, replyingTo) {
     return (dispatch, getState) => {
         const { authUser } = getState()
         dispatch(showLoading())
 
         return saveTweet({
             text,
-            replayingTo,
+            replyingTo,
             author: authUser
         })
         .then((tweet) => {
