@@ -5,6 +5,8 @@ import Dashboard from './dashboard'
 import LoadingBar from 'react-redux-loading'
 import NewTweet from './NewTweet'
 import TweetPage from './TweetPage'
+import { BrowserRouter, Route} from 'react-router-dom'
+import Nav from './Nav'
 
 
 class App extends Component {
@@ -20,13 +22,23 @@ class App extends Component {
     }
 
     return (
-      <div>
+      <React.Fragment>
         <LoadingBar />
-        {this.props.loading === true ?
-        null :
-        <TweetPage match={match} />
-        }
+        <div className="container">
+        <BrowserRouter>
+          <Nav />
+          {this.props.loading === true ?
+          null : <div>
+            <Route path="/" exact component={Dashboard}/>
+            <Route path="/new"  component={NewTweet} />
+            <Route path="/tweet/:id" component={TweetPage}/>
+          </div>
+          }
+        </BrowserRouter>
+
       </div>
+      </React.Fragment>
+
     )
   }
 }
